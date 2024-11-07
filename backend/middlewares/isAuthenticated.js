@@ -10,13 +10,15 @@ const isAuthenticated = async(req, res, next)=>{
             });
         }
         const decode = jwt.verify(token, process.env.JWT_SECRET_KEY);
+        console.log(decode);
+
         if(!decode){
             return res.status(400).json({
                 message: "invalid token",
                 success: false
             });
         }
-        req.id = decode.id;
+        req.id = decode.userId;
         next();
 
     } catch (error) {

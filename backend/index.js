@@ -2,6 +2,7 @@ import  express from "express";
 import dotenv from "dotenv";
 import connectDb from "./utils/database.js";
 import userRoute from "./routes/user.routes.js";
+import messageRoute from "./routes/message.routes.js";
 import cookieParser from "cookie-parser";
 
 dotenv.config({})
@@ -17,6 +18,7 @@ app.use(cookieParser())
 // routes 
 
 app.use("/api/v1/user", userRoute);
+app.use("/api/v1/message", messageRoute);
 
 app.listen(PORT, ()=>{
     connectDb();
